@@ -1,0 +1,25 @@
+ID: PROJ_VIJAY
+_schema-version: '2.1'
+description: PROJ_VIJAY
+version: 0.0.1
+
+modules:
+ - name: DB_PROJ_VIJAY
+   type: hdb
+   path: DB_PROJ_VIJAY
+   requires:
+    - name: hdi_DB_PROJ_VIJAY_2
+
+ 
+
+resources:
+ - name: hdi_DB_PROJ_VIJAY
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+
+ - name: hdi_DB_PROJ_VIJAY_2
+   properties:
+      hdi-container-name_2: ${service-name}
+   type: com.sap.xs.hdi-container
+

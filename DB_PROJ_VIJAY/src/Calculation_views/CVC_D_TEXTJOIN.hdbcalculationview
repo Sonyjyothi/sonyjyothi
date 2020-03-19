@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="PROJ_VIJAY.DB_PROJ_VIJAY.Calculation_views::CVC_D_TEXTJOIN" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CVC_D_TEXTJOIN"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::PRODUCT_INFO">
+    <resourceUri>PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::PRODUCT_INFO</resourceUri>
+  </DataSource>
+  <DataSource id="PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::PRODUCT_DESC">
+    <resourceUri>PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::PRODUCT_DESC</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="PRODUCT_CODE"/>
+      <viewAttribute id="PROD_CAT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::PRODUCT_INFO"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="PRODUCT_CODE"/>
+      <viewAttribute id="LANGUAGE"/>
+      <viewAttribute id="DESCRIPTION"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::PRODUCT_DESC"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="textTable" languageColumn="LANGUAGE">
+    <viewAttributes>
+      <viewAttribute id="PRODUCT_CODE"/>
+      <viewAttribute id="PROD_CAT"/>
+      <viewAttribute id="LANGUAGE"/>
+      <viewAttribute id="DESCRIPTION"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_CODE" source="PRODUCT_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROD_CAT" source="PROD_CAT"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="LANGUAGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_CODE" source="PRODUCT_CODE"/>
+    </input>
+    <joinAttribute name="PRODUCT_CODE"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="PRODUCT_CODE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_CODE"/>
+      <keyMapping columnObjectName="Join_1" columnName="PRODUCT_CODE"/>
+    </attribute>
+    <attribute id="PROD_CAT" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROD_CAT"/>
+      <keyMapping columnObjectName="Join_1" columnName="PROD_CAT"/>
+    </attribute>
+    <attribute id="LANGUAGE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LANGUAGE"/>
+      <keyMapping columnObjectName="Join_1" columnName="LANGUAGE"/>
+    </attribute>
+    <attribute id="DESCRIPTION" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCRIPTION"/>
+      <keyMapping columnObjectName="Join_1" columnName="DESCRIPTION"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="221.11302679000914" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92.00000000000001" y="356.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302.00000000000006" y="356.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="221.11302679000914" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="178.2861328125"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="178.2861328125"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

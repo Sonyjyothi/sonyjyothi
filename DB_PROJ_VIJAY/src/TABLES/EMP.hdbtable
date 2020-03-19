@@ -1,0 +1,16 @@
+COLUMN table "PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::EMP"(  
+  empno    number(4,0),  
+  ename    varchar2(10),  
+  job      varchar2(9),  
+  mgr      number(4,0),  
+  hiredate date,  
+  sal      INTEGER,  
+  comm     number(7,2),  
+  deptno   INTEGER,  
+  primary key (empno) 
+ ------ constraint fk_deptno foreign key ("deptno") references "PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::DEPT" ("deptno")  
+);
+
+
+
+

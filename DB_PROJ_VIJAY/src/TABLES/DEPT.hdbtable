@@ -1,0 +1,6 @@
+COLUMN table "PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::DEPT"(  
+  deptno     INTEGER ,  
+  dname      NVARCHAR(14),  
+  loc        NVARCHAR(13),  
+  primary key (deptno)
+);

@@ -1,0 +1,67 @@
+namespace PROJ_VIJAY.DB_PROJ_VIJAY.TABLES;
+
+context mycds {
+entity Employees {
+key EMP_ID  : Integer not null;
+	FNAME	: String(20);
+	LNAME	: String(20);
+	ROLE	: String(20);
+	JOIN_DATE : LocalDate;
+	SAL		: Integer ;
+	DEPTNO   : Integer ;
+};
+entity more_employees {
+key EMP_ID	: Integer not null;
+	FNAME	: String(20);
+	LNAME	: String(20);
+	ROLE	: String(20);
+};
+
+entity NEW_EMP {
+key EMP_ID	: Integer not null;
+	FNAME	: String(20);
+	LNAME	: String(20);
+	ROLE	: String(20);
+};
+
+
+entity EMP_UNION {
+key EMPNO	: Integer not null;
+	NAME1	: String(20);
+	NAME2	: String(20);
+	GRADE	: String(20);
+};
+
+entity facts {
+	EMP_ID		   : Integer not null;
+	TEAM_ID 	   : Integer;
+	Date		   : LocalDate;
+	REVENUE_EARNED : Integer; 
+};
+
+entity employees_history {
+	KEY SURR_ID	: Integer not null;
+	KEY EMP_ID	: Integer not null;
+	FNAME	: String(20);
+	LNAME	: String(20);
+	ROLE	: String(20);
+	CHANGE_TYPE : String(1);
+	CHANGE_TIME : UTCTimestamp;
+	CURRENTFLAG	: String(1);
+	VALIDFROM	: LocalDate;
+	VALIDTO	: LocalDate;
+};
+entity TARGET_DATA_LOADING {
+key EMP_ID  : Integer not null;
+	FNAME	: String(20);
+	LNAME	: String(20);
+	ROLE	: String(20);
+	JOIN_DATE : LocalDate;
+	SAL		: Integer ;
+};
+entity DEPT {
+ KEY DEPTNO   : Integer not null; 
+  DNAME      : String(20);
+  LOC        : String(20);  
+};
+};

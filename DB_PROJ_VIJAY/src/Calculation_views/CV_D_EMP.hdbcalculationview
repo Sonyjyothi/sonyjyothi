@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="PROJ_VIJAY.DB_PROJ_VIJAY.Calculation_views::CV_D_EMP" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_D_EMP"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::EMP">
+    <resourceUri>PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::EMP</resourceUri>
+  </DataSource>
+  <DataSource id="PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::DEPT">
+    <resourceUri>PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::DEPT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="EMPNO"/>
+      <viewAttribute id="ENAME"/>
+      <viewAttribute id="JOB"/>
+      <viewAttribute id="MGR"/>
+      <viewAttribute id="HIREDATE"/>
+      <viewAttribute id="SAL"/>
+      <viewAttribute id="COMM"/>
+      <viewAttribute id="DEPTNO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::EMP"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="DEPTNO"/>
+      <viewAttribute id="DNAME"/>
+      <viewAttribute id="LOC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PROJ_VIJAY.DB_PROJ_VIJAY.TABLES::DEPT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner" referentialDirection="right">
+    <viewAttributes>
+      <viewAttribute id="EMPNO"/>
+      <viewAttribute id="ENAME"/>
+      <viewAttribute id="JOB"/>
+      <viewAttribute id="MGR"/>
+      <viewAttribute id="HIREDATE"/>
+      <viewAttribute id="SAL"/>
+      <viewAttribute id="COMM"/>
+      <viewAttribute id="DEPTNO"/>
+      <viewAttribute id="DNAME"/>
+      <viewAttribute id="LOC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPNO" source="EMPNO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ENAME" source="ENAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOB" source="JOB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MGR" source="MGR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HIREDATE" source="HIREDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SAL" source="SAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM" source="COMM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPTNO" source="DEPTNO"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DNAME" source="DNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC" source="LOC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPTNO" source="DEPTNO"/>
+    </input>
+    <joinAttribute name="DEPTNO"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="EMPNO" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPNO"/>
+      <keyMapping columnObjectName="Join_1" columnName="EMPNO"/>
+    </attribute>
+    <attribute id="ENAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ENAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="ENAME"/>
+    </attribute>
+    <attribute id="JOB" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="JOB"/>
+      <keyMapping columnObjectName="Join_1" columnName="JOB"/>
+    </attribute>
+    <attribute id="MGR" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MGR"/>
+      <keyMapping columnObjectName="Join_1" columnName="MGR"/>
+    </attribute>
+    <attribute id="HIREDATE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HIREDATE"/>
+      <keyMapping columnObjectName="Join_1" columnName="HIREDATE"/>
+    </attribute>
+    <attribute id="SAL" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SAL"/>
+      <keyMapping columnObjectName="Join_1" columnName="SAL"/>
+    </attribute>
+    <attribute id="COMM" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMM"/>
+      <keyMapping columnObjectName="Join_1" columnName="COMM"/>
+    </attribute>
+    <attribute id="DEPTNO" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEPTNO"/>
+      <keyMapping columnObjectName="Join_1" columnName="DEPTNO"/>
+    </attribute>
+    <attribute id="DNAME" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DNAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="DNAME"/>
+    </attribute>
+    <attribute id="LOC" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOC"/>
+      <keyMapping columnObjectName="Join_1" columnName="LOC"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="221" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="356"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302" y="356"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="221" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="136"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="136"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
